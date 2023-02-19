@@ -30,21 +30,20 @@ void setup()
 }
 void loop()
 {
-  // Set motor direction counterclockwise
   digitalWrite(dirPin, LOW);
 
-  if(!digitalRead(buttonPin))
+  if(digitalRead(buttonPin))
   {
     buttonPressed=true;
     Serial.println("przycisk wciśnięty \n");
+    
   }else
     {
     buttonPressed=false;
-    digitalWrite(diodePin, HIGH);  
-    cycleStarted = false; 
+    cycleStarted = false;
     }
 
-  if(buttonPressed and (cycleStarted==false))
+  if((buttonPressed==true)and (cycleStarted == false))
   {
     cycleStarted = true;
     digitalWrite(diodePin, LOW);
@@ -62,6 +61,7 @@ void loop()
         delay(500); 
         servo.write(30);
         delay(500); 
+        digitalWrite(diodePin, HIGH); 
   }
     
   
